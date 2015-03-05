@@ -93,10 +93,10 @@
     self.defaultFormat = self.videoDevice.activeFormat;
     self.defaultVideoMaxFrameDuration = self.videoDevice.activeVideoMaxFrameDuration;
     
-    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-    AVCaptureDeviceInput *audioIn = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
-    [self.captureSession addInput:audioIn];
-    
+//    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+//    AVCaptureDeviceInput *audioIn = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+//    [self.captureSession addInput:audioIn];
+	
     self.fileOutput = [[AVCaptureMovieFileOutput alloc] init];
     [self.captureSession addOutput:self.fileOutput];
     
