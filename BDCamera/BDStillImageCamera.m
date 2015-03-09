@@ -91,11 +91,13 @@
 - (void)takeImageWithCompletion:(void (^)(UIImage *, NSError *))completion
 {
     [self.photoOutput captureStillImageAsynchronouslyFromConnection:[self stillImageConnection]  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-        NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            completion(image,nil);
-        });
+		if (imageDataSampleBuffer) {
+			NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+			UIImage *image = [[UIImage alloc] initWithData:imageData];
+			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				completion(image,nil);
+			});
+		}
     }];
 }
 
